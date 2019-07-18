@@ -32,14 +32,14 @@ public class Customers
     @ManyToOne(fetch = FetchType.LAZY) // is fetch required here? bfeole
     @JoinColumn(name = "agentcode",
                 nullable = false)
-    @JsonIgnoreProperties("customers")
+    @JsonIgnoreProperties("customer")
     private Agent agent;
 
 
-    @OneToMany(mappedBy = "orders",
+    @OneToMany(mappedBy = "customer",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true)
-    @JsonIgnoreProperties("orders")
+    @JsonIgnoreProperties("customer")
     private List<Orders> orders = new ArrayList<>();
 
     public Customers() // JPA requires default constructor first. so include this before Constructor with fields.
@@ -154,5 +154,15 @@ public class Customers
 
     public void setAgent(Agent agent) {
         this.agent = agent;
+    }
+
+    public List<Orders> getOrders()
+    {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders)
+    {
+        this.orders = orders;
     }
 }

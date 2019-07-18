@@ -26,10 +26,10 @@ public class Agent
     private String phone;
     private String country;
 
-    @OneToMany(mappedBy = "customers",
+    @OneToMany(mappedBy = "agent",
                 cascade = CascadeType.ALL, // if we change the agent change the customer
                 orphanRemoval = true)
-    @JsonIgnoreProperties("customers")
+    @JsonIgnoreProperties("agent")
     private List<Customers> customers = new ArrayList<>();
 
 
