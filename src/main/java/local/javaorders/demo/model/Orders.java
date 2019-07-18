@@ -13,8 +13,8 @@ public class Orders
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ordnum;
 
-    @Column(unique = true,
-            nullable = false)
+//    @Column(unique = true,
+//            nullable = false)
     private double ordamount;
 
 

@@ -56,7 +56,7 @@ public class CustomersServiceImpl implements CustomersServices
         newCustomer.setPaymentamt(customer.getPaymentamt());
         newCustomer.setOutstandingamt(customer.getOutstandingamt());
         newCustomer.setPhone(customer.getPhone());
-//        newCustomer.setAgent(customer.getAgent());
+        newCustomer.setAgent(customer.getAgent());
 
         for (Orders o : customer.getOrders())
         {

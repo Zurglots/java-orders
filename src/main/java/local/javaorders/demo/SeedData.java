@@ -1,4 +1,4 @@
-package local.javaorders.demo.services;
+package local.javaorders.demo;
 
 import local.javaorders.demo.model.Agent;
 import local.javaorders.demo.model.Customers;
@@ -14,14 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class SeedData implements CommandLineRunner {
     private CustomersRepository custrepos;
-//    private AgentsRepository agentrepos;
+    private AgentRepository agentrepos;
     private OrdersRepository ordersrepos;
-//    AgentsRepository agentrepos,
 
 
-    public SeedData(CustomersRepository custrepos, OrdersRepository ordersrepos) {
+
+    public SeedData(CustomersRepository custrepos, AgentRepository agentrepos, OrdersRepository ordersrepos) {
         this.custrepos = custrepos;
-//        this.agentrepos = agentrepos;
+        this.agentrepos = agentrepos;
         this.ordersrepos = ordersrepos;
     }
 
@@ -66,31 +66,31 @@ public class SeedData implements CommandLineRunner {
         Customers c24 = new Customers("Venkatpati", "Bangalore", "Bangalore", "India", "2", 8000.00, 11000.00, 7000.00, 12000.00, "JRTVFDD", a07);
         Customers c25 = new Customers("Sundariya", "Chennai", "Chennai", "India", "3", 7000.00, 11000.00, 7000.00, 11000.00, "PPHGRTS", a10);
 
-        Orders o01 = new Orders(1000.00, 600.00, "ORDERDESCRIPTION", c13);
-        Orders o02 = new Orders(3000.00, 500.00, "ORDERDESCRIPTION", c19);
-        Orders o03 = new Orders(4500.00, 900.00, "ORDERDESCRIPTION", c07);
-        Orders o04 = new Orders(2000.00, 400.00, "ORDERDESCRIPTION", c16);
-        Orders o05 = new Orders(4000.00, 600.00, "ORDERDESCRIPTION", c22);
-        Orders o06 = new Orders(2000.00, 300.00, "ORDERDESCRIPTION", c12);
-        Orders o07 = new Orders(3500.00, 2000.00, "ORDERDESCRIPTION", c02);
-        Orders o08 = new Orders(2500.00, 400.00, "ORDERDESCRIPTION", c03);
-        Orders o09 = new Orders(500.00, 100.00, "ORDERDESCRIPTION", c23);
-        Orders o10 = new Orders(4000.00, 700.00, "ORDERDESCRIPTION", c07);
-        Orders o11 = new Orders(1500.00, 600.00, "ORDERDESCRIPTION", c08);
-        Orders o12 = new Orders(2500.00, 400.00, "ORDERDESCRIPTION", c25);
+        Orders o01 = new Orders(1000.00, 600.00, "SOD", c13);
+        Orders o02 = new Orders(3000.00, 500.00, "SOD", c19);
+        Orders o03 = new Orders(4500.00, 900.00, "SOD", c07);
+        Orders o04 = new Orders(2000.00, 400.00, "SOD", c16);
+        Orders o05 = new Orders(4000.00, 600.00, "SOD", c22);
+        Orders o06 = new Orders(2000.00, 300.00, "SOD", c12);
+        Orders o07 = new Orders(3500.00, 2000.00, "SOD", c02);
+        Orders o08 = new Orders(2500.00, 400.00, "SOD", c03);
+        Orders o09 = new Orders(500.00, 100.00, "SOD", c23);
+        Orders o10 = new Orders(4000.00, 700.00, "SOD", c07);
+        Orders o11 = new Orders(1500.00, 600.00, "SOD", c08);
+        Orders o12 = new Orders(2500.00, 400.00, "SOD", c25);
 
-//        agentrepos.save(a01);
-//        agentrepos.save(a02);
-//        agentrepos.save(a03);
-//        agentrepos.save(a04);
-//        agentrepos.save(a05);
-//        agentrepos.save(a06);
-//        agentrepos.save(a07);
-//        agentrepos.save(a08);
-//        agentrepos.save(a09);
-//        agentrepos.save(a10);
-//        agentrepos.save(a11);
-//        agentrepos.save(a12);
+        agentrepos.save(a01);
+        agentrepos.save(a02);
+        agentrepos.save(a03);
+        agentrepos.save(a04);
+        agentrepos.save(a05);
+        agentrepos.save(a06);
+        agentrepos.save(a07);
+        agentrepos.save(a08);
+        agentrepos.save(a09);
+        agentrepos.save(a10);
+        agentrepos.save(a11);
+        agentrepos.save(a12);
 
         custrepos.save(c01);
         custrepos.save(c02);
@@ -118,17 +118,17 @@ public class SeedData implements CommandLineRunner {
         custrepos.save(c24);
         custrepos.save(c25);
 
-//        ordersrepos.save(o01);
-//        ordersrepos.save(o02);
-//        ordersrepos.save(o03);
-//        ordersrepos.save(o04);
-//        ordersrepos.save(o05);
-//        ordersrepos.save(o06);
-//        ordersrepos.save(o07);
-//        ordersrepos.save(o08);
-//        ordersrepos.save(o09);
-//        ordersrepos.save(o10);
-//        ordersrepos.save(o11);
-//        ordersrepos.save(o12);
+        ordersrepos.save(o01);
+        ordersrepos.save(o02);
+        ordersrepos.save(o03);
+        ordersrepos.save(o04);
+        ordersrepos.save(o05);
+        ordersrepos.save(o06);
+        ordersrepos.save(o07);
+        ordersrepos.save(o08);
+        ordersrepos.save(o09);
+        ordersrepos.save(o10);
+        ordersrepos.save(o11);
+        ordersrepos.save(o12);
     }
 }

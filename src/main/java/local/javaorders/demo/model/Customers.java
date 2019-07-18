@@ -29,7 +29,7 @@ public class Customers
     private double outstandingamt;
     private String phone;
 
-    @ManyToOne(fetch = FetchType.LAZY) // is fetch required here? bfeole
+    @ManyToOne // is fetch required here? bfeole
     @JoinColumn(name = "agentcode",
                 nullable = false)
     @JsonIgnoreProperties("customer")
