@@ -29,7 +29,7 @@ public class CustomersServiceImpl implements CustomersServices
     }
 
     @Override
-    public Customers findCustomerByName(String name)
+    public Customers findCustomerByName(String name) throws EntityNotFoundException
     {
         Customers customer = custrepos.findByCustname(name);
 
@@ -65,13 +65,88 @@ public class CustomersServiceImpl implements CustomersServices
         return custrepos.save(newCustomer);
     }
 
+    @Transactional
     @Override
-    public Customers update(Customers customers, long custcode) {
-        return null;
+    public Customers update(Customers customers, long custcode)
+    {
+        Customers currentCustomer = custrepos.findById(custcode).orElseThrow(() -> new EntityNotFoundException(Long.toString(custcode)));
+
+
+        if (customers.getCustname() != null)
+        {
+            currentCustomer.setCustname(customers.getCustname());
+        }
+
+        if (customers.getCustcity() != null)
+        {
+            currentCustomer.setCustcity(customers.getCustcity());
+        }
+
+        if (customers.getWorkingarea() != null)
+        {
+            currentCustomer.setWorkingarea(customers.getCustcity());
+        }
+
+        if (customers.getCustcountry() != null)
+        {
+            currentCustomer.setCustcountry(customers.getCustcountry());
+        }
+
+        if (customers.getGrade() != null)
+        {
+            currentCustomer.setGrade(customers.getGrade());
+        }
+
+        if (customers.getOpeningamt() != 0)
+        {
+            currentCustomer.setOpeningamt(customers.getOpeningamt());
+        }
+
+        if (customers.getReceiveamt() != 0)
+        {
+            currentCustomer.setReceiveamt(customers.getReceiveamt());
+        }
+
+        if (customers.getPaymentamt() != 0)
+        {
+            currentCustomer.setPaymentamt(customers.getPaymentamt());
+        }
+
+        if (customers.getOutstandingamt() != 0)
+        {
+            currentCustomer.setOutstandingamt(customers.getOutstandingamt());
+        }
+
+        if (customers.getPhone() != null)
+        {
+            currentCustomer.setPhone(customers.getPhone());
+        }
+
+        if (customers.getAgent() != null)
+        {
+            currentCustomer.setAgent(customers.getAgent());
+        }
+
+        if (customers.getOrders().size() > 0)
+        {
+            for (Orders o : customers.getOrders())
+            {
+                currentCustomer.getOrders().add(new Orders(o.getOrdamount(), o.getAdvanceamount(), o.getOrddescription(), o.getCustomer()));
+            }
+        }
+
+        return custrepos.save(currentCustomer);
     }
 
+    @Transactional
     @Override
-    public void delete(long custcode) {
-
+    public void delete(long custcode)
+    {
+        if (custrepos.findById(custcode).isPresent())
+        {
+            custrepos.deleteById(custcode);
+        } else {
+            throw new EntityNotFoundException(Long.toString(custcode));
+        }
     }
 }
